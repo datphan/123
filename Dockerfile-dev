@@ -24,4 +24,6 @@ WORKDIR $APP
 
 RUN yarn
 
+RUN ls
+
 VOLUME $APP/node_modules

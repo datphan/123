@@ -16,7 +16,7 @@ services:
         - CI_PROJECT_NAME=${CI_PROJECT_NAME}
     # we use image for faster developing with `npm install` already run
     image: ${DOCKER_IMAGE_DEV:-teracy/angular-boilerplate:dev_develop}
-    command: bash -c "yarn run start"
+    command: bash -c "ls && yarn run start"
     environment:
       NODE_ENV: development
       VIRTUAL_HOST: dev.ab.teracy.dev
