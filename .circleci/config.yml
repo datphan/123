@@ -14,5 +14,5 @@ jobs:
       - run: ls
       - run:
           name: Test
-          command: docker run --rm -v ~/project1:/opt/app teracy/angular-boilerplate:dev_develop yarn run test
+          command: docker run --rm -v ~/project1/:/opt/app/ teracy/angular-boilerplate:dev_develop yarn run test
 
