@@ -44,5 +44,3 @@ Thumbs.db
 !node_modules/.gitkeep
 
 # angular-boilerplate
-.angular-cli.json
-package.json
