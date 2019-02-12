@@ -4,6 +4,15 @@ jobs:
     docker:
       - image: ubuntu:18.04
 
+
+    environment:
+      PROJECT_VERSION: 0.2.0
+      PROJECT_NAME: angular-boilerplate
+      DOCKER_IMAGE_DEV: teracy/angular-boilerplate:dev_develop
+      DOCKER_IMAGE_PROD: teracy/angular-boilerplate:develop
+      DOMAIN_DEV: dev.ab.teracy.dev
+      DOMAIN_PROD: ab.teracy.dev
+
     steps:
       - checkout
 
@@ -18,14 +27,6 @@ jobs:
       - run: mv docker-compose /usr/local/bin
       - run: docker --version
       - run: docker-compose --version
-      - run: cp .env.example .env
-      - run: export $(cat .env | grep -v ^# | xargs)
-      - run: export PROJECT_NAME=angular-boilerplate
-      - run: export PROJECT_VERSION=0.2.0
-      - run: export DOCKER_IMAGE_DEV=teracy/angular-boilerplate:dev_develop
-      - run: export DOCKER_IMAGE_PROD=teracy/angular-boilerplate:develop
-      - run: export DOMAIN_DEV=dev.ab.teracy.dev
-      - run: export DOMAIN_PROD=ab.teracy.dev
       - run: ls
       - run: sh ./setup.sh
       - run: env
