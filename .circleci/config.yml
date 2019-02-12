@@ -1,6 +1,7 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/project1
     docker:
       - image: circleci/node:9.4.0-browsers
     steps:
@@ -12,5 +13,5 @@ jobs:
       - run: ls
       - run:
           name: Test
-          command: docker-compose run --rm -v ./:/opt/app dev yarn run test
+          command: docker-compose run --rm -v ~/project1:/opt/app dev ls && yarn run test
 
