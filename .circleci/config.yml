@@ -11,5 +11,5 @@ jobs:
           command: docker-compose build --pull
       - run:
           name: Test
-          command: docker-compose up -d && docker-compose run --rm dev ng test --browsers Chrome_no_sandbox -w false 
+          command: docker-compose up -d && docker-compose exec dev ng test --browsers Chrome_no_sandbox -w false 
 
