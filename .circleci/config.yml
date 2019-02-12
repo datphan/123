@@ -2,37 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ubuntu:18.04
-
-
-    environment:
-      PROJECT_VERSION: 0.2.0
-      PROJECT_NAME: angular-boilerplate
-      DOCKER_IMAGE_DEV: teracy/angular-boilerplate:dev_develop
-      DOCKER_IMAGE_PROD: teracy/angular-boilerplate:develop
-      DOMAIN_DEV: dev.ab.teracy.dev
-      DOMAIN_PROD: ab.teracy.dev
-
+      - image: circleci/node:9.4.0
     steps:
       - checkout
-
+      - setup_docker
       - run:
-          name: Print the Current Time 1
-          command: date
-
-      - run: apt-get update && apt-get -y install curl && apt-get -y install gettext-base
-      - run: curl -sSL https://get.docker.com/ | sh
-      - run: curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > docker-compose
-      - run: chmod +x docker-compose
-      - run: mv docker-compose /usr/local/bin
-      - run: docker --version
-      - run: docker-compose --version
-      - run: ls
-      - run: sh ./setup.sh
-      - run: env
-      - run: docker-compose build --pull
-      - run: docker-compose run --rm dev ng test --browsers Chrome_no_sandbox -w false 
-
+          name: Start container
+          command: docker-compose up --build
       - run:
-          name: Print the Current Time 2
-          command: date
+          name: Test
+          command: docker-compose run --rm dev ng test --browsers Chrome_no_sandbox -w false 
+
