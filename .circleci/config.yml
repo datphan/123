@@ -9,7 +9,8 @@ jobs:
       - run:
           name: Build
           command: docker-compose build --pull
+      - run: ls
       - run:
           name: Test
-          command: docker-compose run --rm -v $(pwd):/opt/app dev yarn test
+          command: docker-compose run --rm -v ./:/opt/app dev yarn run test
 
