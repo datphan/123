@@ -14,7 +14,8 @@ jobs:
       - run: apk add --update libintl && apk add --virtual build_deps gettext
       - run: cp .env.example .env
       - run: export $(cat .env | grep -v ^# | xargs)
-      - run: ./setup.sh 
+      - run: ls
+      - run: sh ./setup.sh
       - run: docker-compose build --pull
       - run: docker-compose run --rm dev ng test --browsers Chrome_no_sandbox -w false 
 
