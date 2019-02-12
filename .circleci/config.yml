@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8-browsers
+
+    steps:
+      - checkout
+
+      - run:
+          name: Print the Current Time 1
+          command: date
+
+      - run: cp .env.example .env
+      - run: export $(cat .env | grep -v ^# | xargs)
+      - run: export PROJECT_NAME=angular-hello-world
+      - run: export PROJECT_VERSION=0.1.0-SNAPSHOT
+      - run: export DEV_DOCKER_IMAGE=datphan/angular-hello-world:dev_develop
+      - run: export PROD_DOCKER_IMAGE=datphan/angular-hello-world:develop
+      - run: ./setup.sh 
+      - run: docker-compose build --pull
+      - run: docker-compose run --rm dev ng test --browsers ChromeHeadlessCI -w false 
+
+      - run:
+          name: Print the Current Time 2
+          command: date
