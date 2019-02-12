@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: alpine:3.6
+      - image: ubuntu:18.04
 
     steps:
       - checkout
@@ -11,7 +11,6 @@ jobs:
           name: Print the Current Time 1
           command: date
 
-      - run: apk add --update libintl && apk add --virtual build_deps gettext
       - run: curl -sSL https://get.docker.com/ | sh
       - run: rm /usr/local/bin/docker-compose
       - run: curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > docker-compose
