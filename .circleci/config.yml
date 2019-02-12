@@ -11,8 +11,8 @@ jobs:
           name: Build
           command: docker-compose build --pull
       - run: pwd
-      - run: ls
+      - run: ls -l ~/project1
       - run:
           name: Test
-          command: docker run --rm -v ~/project1/package.json:/opt/app/package.json -v ~/project1/:/opt/app/ teracy/angular-boilerplate:dev_develop yarn run test
+          command: docker run --rm -v /home/circleci/project1:/opt/app teracy/angular-boilerplate:dev_develop ls && yarn run test
 
