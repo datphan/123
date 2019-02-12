@@ -10,8 +10,9 @@ jobs:
       - run:
           name: Build
           command: docker-compose build --pull
+      - run: pwd
       - run: ls
       - run:
           name: Test
-          command: docker-compose run --rm -v ~/project1:/opt/app dev ls && yarn run test
+          command: docker-compose run --rm -v $(pwd):/opt/app dev ls -l && bash -c "yarn run test"
 
