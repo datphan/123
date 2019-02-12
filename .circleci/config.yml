@@ -11,9 +11,9 @@ jobs:
           name: Print the Current Time 1
           command: date
 
-      - run: curl -sSL https://get.docker.com/ | sh
+      - run: sudo curl -sSL https://get.docker.com/ | sh
       - run: rm /usr/local/bin/docker-compose
-      - run: curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > docker-compose
+      - run: sudo curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > docker-compose
       - run: chmod +x docker-compose
       - run: sudo mv docker-compose /usr/local/bin
       - run: docker --version
