@@ -8,7 +8,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Start container
-          command: docker-compose up --build
+          command: docker-compose build --pull
       - run:
           name: Test
           command: docker-compose run --rm dev ng test --browsers Chrome_no_sandbox -w false 
