@@ -22,7 +22,7 @@ ADD package.json $APP/
 
 WORKDIR $APP
 
-RUN yarn
+RUN npm install
 
 RUN ls
 
