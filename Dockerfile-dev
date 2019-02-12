@@ -23,7 +23,6 @@ ADD package.json $APP/
 WORKDIR $APP
 
 RUN yarn
-RUN yarn global add @angular/cli
 
 RUN ls
 
