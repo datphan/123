@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: alpine:3.6
-      - image: circleci/node:8-browsers
 
     steps:
       - checkout
