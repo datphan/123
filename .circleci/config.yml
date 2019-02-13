@@ -10,6 +10,5 @@ jobs:
       - run: pwd && cat .angular-cli.json
       - run: ls -la ~/project1
       - run: yarn install
-      - run: xvfb-run -a ng update --all
       - run: xvfb-run -a yarn run test -- --single-run
 

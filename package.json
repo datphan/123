@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve --host=0.0.0.0 --liveReloadClient http://dev.ab.teracy.dev",
     "build": "ng build",
-    "test": "ng test --browsers Chrome_no_sandbox -w false",
+    "test": "ng update --all && ng test --browsers Chrome_no_sandbox -w false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
