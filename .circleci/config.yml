@@ -3,7 +3,10 @@ jobs:
   build:
     working_directory: ~/project1
     docker:
-      - image: circleci/node:9.4.0-browsers
+      - image: circleci/node:8.9.3-browsers
+    dependencies:
+      pre:
+        - npm install angular-cli@latest -g
     steps:
       - checkout
 
@@ -19,5 +22,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm run test -- --single-run --browsers=ChromeNoSandboxHeadless
+      - run: npm run ng
+      - run: xvfb-run -a npm run test
 
