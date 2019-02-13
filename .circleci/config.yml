@@ -6,10 +6,18 @@ jobs:
       - image: circleci/node:9.4.0-browsers
     steps:
       - checkout
-      # - setup_remote_docker
-      - run: pwd && cat .angular-cli.json
-      - run: ls -la ~/project1
-      - run: rm -rf node_modules/
-      - run: yarn install
-      - run: xvfb-run -a yarn run e2e --single-run
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: npm install
+ 
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: npm run test --single-run --browsers=ChromeNoSandbox
 
