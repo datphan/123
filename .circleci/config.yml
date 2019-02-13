@@ -9,6 +9,7 @@ jobs:
       # - setup_remote_docker
       - run: pwd && cat .angular-cli.json
       - run: ls -la ~/project1
+      - run: rm -rf node_modules/
       - run: yarn install
       - run: xvfb-run -a yarn run test -- --single-run
 
