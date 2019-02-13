@@ -8,9 +8,8 @@ jobs:
       - checkout
       # - setup_remote_docker
       - run: pwd && cat .angular-cli.json
-      - run: ls -l ~/project1
-
+      - run: ls -la ~/project1
       - run: yarn install
-
-      - run: xvfb-run -a yarn run test -- --single-run --no-progress
+      - run: xvfb-run -a ng update --all
+      - run: xvfb-run -a yarn run test -- --single-run
 
