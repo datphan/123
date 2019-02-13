@@ -11,5 +11,5 @@ jobs:
       - run: ls -la ~/project1
       - run: rm -rf node_modules/
       - run: yarn install
-      - run: xvfb-run -a yarn run test -- --single-run
+      - run: xvfb-run -a yarn run e2e --single-run
 
