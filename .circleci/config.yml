@@ -6,10 +6,10 @@ jobs:
       - image: circleci/node:9.4.0-browsers
     steps:
       - checkout
+      - run:
+          name: Build
+          command: docker build -t teracy/angular-boilerplate:dev_develop -f Dockerfile-dev . && docker run -v ~/project1:/opt/app teracy/angular-boilerplate:dev_develop pwd && ls node_modules/ && yarn run test
       - setup_remote_docker
       - run: pwd && cat .angular-cli.json
       - run: ls -l ~/project1
-      - run:
-          name: Build
-          command: docker build -t teracy/angular-boilerplate:dev_develop -f Dockerfile-dev . && docker run --rm -v ~/project1:/opt/app teracy/angular-boilerplate:dev_develop pwd && ls node_modules/ && yarn run test
 

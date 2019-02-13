@@ -27,3 +27,5 @@ RUN yarn
 ADD . $APP/
 
 RUN ls
+
+RUN ls node_modules/
