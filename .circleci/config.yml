@@ -12,5 +12,5 @@ jobs:
 
       - run: yarn install
 
-      - run: xvfb-run -a npm run test -- --single-run --no-progress
+      - run: xvfb-run -a yarn run test -- --single-run --no-progress
 
