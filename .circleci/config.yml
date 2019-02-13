@@ -22,7 +22,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: ng version
-      - run: ng update @angular/cli
+      - run: npm run ng -- version
+      - run: npm run ng -- update @angular/cli
       - run: xvfb-run -a npm run test
 
